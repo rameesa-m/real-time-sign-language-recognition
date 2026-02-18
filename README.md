@@ -45,24 +45,20 @@ The solution demonstrates the practical integration of Computer Vision and Machi
 
 ## System Architecture Diagram
 
-## 🎨 System Workflow
-
-```mermaid
-flowchart LR
-    A[📷 Webcam Input] --> B[✋ Hand Landmark Detection<br/>(MediaPipe – 21 Keypoints)]
-    B --> C[📊 Feature Extraction<br/>(x, y Coordinates)]
-    C --> D[⚙ Feature Normalization<br/>(Position Invariant)]
-    D --> E[🌲 Random Forest Classifier]
-    E --> F[🔤 Gesture Prediction]
-    F --> G[🔊 Text-to-Speech Output]
-
-    style A fill:#4CAF50,color:#ffffff,stroke:#2E7D32,stroke-width:2px
-    style B fill:#FF9800,color:#ffffff,stroke:#E65100,stroke-width:2px
-    style C fill:#2196F3,color:#ffffff,stroke:#0D47A1,stroke-width:2px
-    style D fill:#9C27B0,color:#ffffff,stroke:#4A148C,stroke-width:2px
-    style E fill:#3F51B5,color:#ffffff,stroke:#1A237E,stroke-width:2px
-    style F fill:#E91E63,color:#ffffff,stroke:#880E4F,stroke-width:2px
-    style G fill:#009688,color:#ffffff,stroke:#004D40,stroke-width:2px
+```
+Webcam Input
+      ↓
+Hand Detection (MediaPipe – 21 Landmarks)
+      ↓
+Feature Extraction (x, y Coordinates)
+      ↓
+Feature Normalization
+      ↓
+Random Forest Classifier
+      ↓
+Gesture Prediction
+      ↓
+Text-to-Speech Output
 ```
 
 ---

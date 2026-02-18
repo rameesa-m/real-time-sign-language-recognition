@@ -1,144 +1,138 @@
-# Real-Time Sign Language Recognition System
+**Real-Time Sign Language Recognition System**
+**Overview**
 
-## Overview
+This project presents a **Real-Time Sign Language Recognition System** using **Computer Vision** and **Machine Learning** techniques.  
+The system captures live webcam input, detects hand landmarks using **MediaPipe**, extracts normalized spatial features, and classifies gestures with a **Random Forest** model.  
 
-This project presents a real-time Sign Language Recognition system built using MediaPipe hand landmark detection and Machine Learning. The system captures live video input, extracts structured hand landmark features, classifies gestures using a Random Forest model, and converts predictions into speech output.
+Predicted gestures are displayed on-screen and can be converted into **speech output**, enabling assistive communication for speech-impaired individuals.  
 
-The solution demonstrates the practical integration of Computer Vision and Machine Learning for assistive technology applications, particularly for supporting speech-impaired communication.
+ **Key Features**
+- Real-time gesture recognition via webcam  
+- Detection of **21 hand landmarks** using MediaPipe  
+- **Feature normalization** for translation invariance  
+- **Random Forest** based gesture classification  
+- Recognition of **A–Z alphabets**  
+- Recognition of common words:
+  - Hello  
+  - Thank You  
+  - Yes / No  
+  - I Love You  
+- Optional **Text-to-Speech** output using pyttsx3  
+- Modular and **scalable ML pipeline**
 
----
 
-## Key Features
+**Technology Stack**
+Technology	Purpose
+Python	Core programming language
+OpenCV	Video capture and visualization
+MediaPipe	Hand landmark detection
+Scikit-learn	Machine Learning model training
+NumPy	Numerical computations
+pyttsx3	Text-to-Speech conversion
 
-- Real-time gesture recognition using webcam input
-- Hand landmark detection with MediaPipe (21 keypoints)
-- Feature normalization for position invariance
-- Random Forest-based gesture classification
-- Support for A–Z alphabets
-- Support for common words (Hello, Thank You, Yes, No, I Love You)
-- Text-to-Speech output using pyttsx3
-- Modular and scalable ML pipeline
+**System Workflow**
 
----
+1. Capture live video stream from webcam  
+2. Detect hand using MediaPipe and extract **21 landmark coordinates**  
+3. Normalize features for position invariance  
+4. Train a **Random Forest** classifier using labeled gesture data  
+5. Perform **real-time gesture prediction**  
+6. Convert predicted output into speech (optional) 
 
-## Technology Stack
+**System Architecture**
+        Webcam Input
+              ↓
+  Hand Detection (MediaPipe)
+       21 Landmarks
+              ↓
+   Feature Extraction (x, y)
+              ↓
+    Feature Normalization
+              ↓
+  Random Forest Classifier
+              ↓
+      Gesture Prediction
+              ↓
+   Text Display / Speech Output
 
-- **Python** – Core programming language  
-- **OpenCV** – Video capture and visualization  
-- **MediaPipe** – Hand landmark detection  
-- **Scikit-learn** – Machine Learning model training  
-- **NumPy** – Numerical processing  
-- **pyttsx3** – Speech synthesis  
-
----
-
-## System Workflow
-
-1. Capture hand gesture images through webcam.
-2. Detect 21 hand landmark coordinates using MediaPipe.
-3. Normalize extracted landmark features.
-4. Train a Random Forest classifier using labeled data.
-5. Perform real-time gesture prediction.
-6. Convert predicted output into speech.
-
----
-
-## System Architecture Diagram
-
-```
-Webcam Input
-      ↓
-Hand Detection (MediaPipe – 21 Landmarks)
-      ↓
-Feature Extraction (x, y Coordinates)
-      ↓
-Feature Normalization
-      ↓
-Random Forest Classifier
-      ↓
-Gesture Prediction
-      ↓
-Text-to-Speech Output
-```
-
----
-
-## Installation
-
-### 1. Clone the Repository
-
-```bash
+**Installation**
+**Clone the Repository**
 git clone https://github.com/your-username/real-time-sign-language-recognition.git
 cd real-time-sign-language-recognition
-```
 
-### 2. Install Dependencies
-
-```bash
+**Install Required Dependencies**
 pip install opencv-python mediapipe scikit-learn numpy pyttsx3
-```
 
----
+**Usage**
+Step 1 – Collect Dataset
+python collect_images.py
 
-## Usage
+Step 2 – Create Dataset File
+python create_dataset.py
 
-### Step 1 – Collect Dataset
-```bash
-python data_collection.py
-```
+Step 3 – Train the Model
+python train_classifier.py
 
-### Step 2 – Extract Features
-```bash
-python feature_extraction.py
-```
+Step 4 – Run Real-Time Recognition
 
-### Step 3 – Train the Model
-```bash
-python train_model.py
-```
+Without voice output:
 
-### Step 4 – Run Real-Time Prediction
-```bash
-python predict_with_voice.py
-```
+python app.py
 
-Press `Q` to exit the webcam window.
 
----
+With voice output:
 
-## Model Information
+python sound_app.py
 
-- **Model Type:** Random Forest Classifier  
-- **Input Features:** Normalized hand landmark coordinates  
-- **Train-Test Split:** 80-20  
-- **Evaluation Metric:** Accuracy Score  
 
-Random Forest is selected due to its strong performance on structured feature data, low computational complexity, and robustness without requiring deep learning infrastructure.
+Press Q to exit the webcam window.
 
----
+**Model Details**
 
-## Dataset Note
+Model Type: Random Forest Classifier
 
-The dataset is not included in this repository due to size limitations. Users can generate their own dataset using the provided data collection script.
+Input Features: Normalized (x, y) hand landmark coordinates
 
----
+Train-Test Split: 80:20
 
-## Applications
+Evaluation Metric: Accuracy Score
 
-- Assistive communication systems  
-- Human-computer interaction  
-- Gesture-controlled interfaces  
-- Educational and research purposes  
+**Why Random Forest?**
 
----
+Random Forest was selected because:
 
-## Author
+It performs well on structured numerical feature data
 
-Rameesa M  
-MSc Data Analytics  
+It requires minimal hyperparameter tuning
 
----
+It is computationally efficient
 
-## License
+It avoids the need for GPU-intensive deep learning models
+
+**Dataset Information**
+
+The dataset is not included in this repository due to size constraints.
+
+Users can generate their own dataset using the provided data collection script. The system is designed to support custom gesture expansion and scalability.
+
+**Applications**
+
+Assistive communication systems
+
+Human-Computer Interaction (HCI)
+
+Gesture-based control systems
+
+Educational and academic research
+
+Accessibility-focused technology solutions
+
+**Author**
+
+Rameesa M
+MSc Data Analytics
+
+**License**
 
 This project is developed for academic and educational purposes.
+It may be extended for research and non-commercial applications.

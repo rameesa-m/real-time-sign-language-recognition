@@ -1,143 +1,106 @@
 # Real-Time Sign Language Recognition System
 
-## Overview
-
-This project presents a real-time Sign Language Recognition system built using MediaPipe hand landmark detection and Machine Learning. The system captures live video input, extracts structured hand landmark features, classifies gestures using a Random Forest model, and converts predictions into speech output.
-
-The solution demonstrates the practical integration of Computer Vision and Machine Learning for assistive technology applications, particularly for supporting speech-impaired communication.
+A real-time system that detects hand gestures from a webcam and converts them into speech using Computer Vision and Machine Learning.
 
 ---
 
-## Key Features
+## What It Does
 
-- Real-time gesture recognition using webcam input
-- Hand landmark detection with MediaPipe (21 keypoints)
-- Feature normalization for position invariance
-- Random Forest-based gesture classification
-- Support for A–Z alphabets
-- Support for common words (Hello, Thank You, Yes, No, I Love You)
-- Text-to-Speech output using pyttsx3
-- Modular and scalable ML pipeline
+- Detects hand gestures through webcam
+- Recognizes A–Z alphabets and common words (Hello, Thank You, Yes, No, I Love You)
+- Speaks out the recognized gesture using text-to-speech
 
 ---
 
-## Technology Stack
+## Tech Used
 
-- **Python** – Core programming language  
-- **OpenCV** – Video capture and visualization  
-- **MediaPipe** – Hand landmark detection  
-- **Scikit-learn** – Machine Learning model training  
-- **NumPy** – Numerical processing  
-- **pyttsx3** – Speech synthesis  
-
----
-
-## System Workflow
-
-1. Capture hand gesture images through webcam.
-2. Detect 21 hand landmark coordinates using MediaPipe.
-3. Normalize extracted landmark features.
-4. Train a Random Forest classifier using labeled data.
-5. Perform real-time gesture prediction.
-6. Convert predicted output into speech.
+- **Python** – Programming language
+- **OpenCV** – Webcam and video processing
+- **MediaPipe** – Hand landmark detection (21 points)
+- **Scikit-learn** – Random Forest classifier
+- **NumPy** – Data processing
+- **pyttsx3** – Text-to-speech
 
 ---
 
-## System Architecture Diagram
-
-```
-Webcam Input
-      ↓
-Hand Detection (MediaPipe – 21 Landmarks)
-      ↓
-Feature Extraction (x, y Coordinates)
-      ↓
-Feature Normalization
-      ↓
-Random Forest Classifier
-      ↓
-Gesture Prediction
-      ↓
-Text-to-Speech Output
-```
-
----
-
-## Installation
-
-### 1. Clone the Repository
+## How to Install
 
 ```bash
 git clone https://github.com/your-username/real-time-sign-language-recognition.git
 cd real-time-sign-language-recognition
-```
-
-### 2. Install Dependencies
-
-```bash
 pip install opencv-python mediapipe scikit-learn numpy pyttsx3
 ```
 
 ---
 
-## Usage
+## How to Run
 
-Step 1 – Collect Dataset
+Run these scripts one by one:
+
+```bash
+# 1. Collect gesture images
 python collect_images.py
 
-Step 2 – Create Dataset File
+# 2. Create the dataset
 python create_dataset.py
 
-Step 3 – Train the Model
+# 3. Train the model
 python train_classifier.py
 
-Step 4 – Run Real-Time Recognition
+# 4. Run the app
+python app.py        # without voice
+python sound_app.py  # with voice
+```
 
-Without voice output:
-
-python app.py
-
-
-With voice output:
-
-python sound_app.py
-
-
-Press Q to exit the webcam window.
-
-## Model Information
-
-- **Model Type:** Random Forest Classifier  
-- **Input Features:** Normalized hand landmark coordinates  
-- **Train-Test Split:** 80-20  
-- **Evaluation Metric:** Accuracy Score  
-
-Random Forest is selected due to its strong performance on structured feature data, low computational complexity, and robustness without requiring deep learning infrastructure.
+> Press **Q** to quit the webcam window.
 
 ---
 
-## Dataset Note
+## How It Works
 
-The dataset is not included in this repository due to size limitations. Users can generate their own dataset using the provided data collection script.
+```
+Webcam → Hand Detection → Feature Extraction → Normalization → Random Forest → Prediction → Speech
+```
+
+1. Webcam captures hand gesture
+2. MediaPipe detects 21 hand landmarks (x, y coordinates)
+3. Coordinates are normalized for position invariance
+4. Random Forest model predicts the gesture
+5. Prediction is spoken aloud
+
+---
+
+## Model Details
+
+| Detail | Value |
+|---|---|
+| Model | Random Forest |
+| Input | 42 features (21 landmarks × x, y) |
+| Train/Test Split | 80% / 20% |
+| Classes | A–Z + 5 common words |
+
+---
+
+## Dataset
+
+The dataset is not included. Use `collect_images.py` to generate your own. Collect at least **100 images per gesture** for good accuracy.
 
 ---
 
 ## Applications
 
-- Assistive communication systems  
-- Human-computer interaction  
-- Gesture-controlled interfaces  
-- Educational and research purposes  
+- Assistive communication for speech-impaired individuals
+- Gesture-based human-computer interaction
+- Sign language learning tools
 
 ---
 
 ## Author
 
-Rameesa M  
-MSc Data Analytics  
+**Rameesa M** — MSc Data Analytics
 
 ---
 
 ## License
 
-This project is developed for academic and educational purposes.
+For academic and educational use only.
